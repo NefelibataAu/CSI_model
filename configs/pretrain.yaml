@@ -1,0 +1,39 @@
+# ============================================================
+# Pretrain configuration — BERT-style masked CSI pretraining
+# ============================================================
+
+# ---------- Data ----------
+data:
+  path: data/csi_toy.npz        # .npz or .pt file
+  npz_key: csi                  # key inside the .npz archive
+  batch_size: 64
+  num_workers: 2
+  val_split: 0.1                # fraction held out for monitoring
+
+# ---------- CSI dimensions ----------
+csi:
+  n_sc: 32    # subcarriers
+  n_r: 4      # receive antennas
+  n_t: 4      # transmit antennas
+
+# ---------- Model ----------
+model:
+  d_model: 256
+  n_heads: 8
+  n_layers: 4
+  d_ff: 1024
+  dropout: 0.1
+  mask_ratio: 0.15
+
+# ---------- Training ----------
+train:
+  n_epochs: 100
+  lr: 1.0e-4
+  weight_decay: 1.0e-2
+  use_amp: false                # set true when training on GPU
+  device: cpu                   # "cuda" or "cpu"
+
+# ---------- Checkpoints ----------
+checkpoint:
+  save_dir: checkpoints/pretrain
+  save_every: 10
