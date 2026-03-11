@@ -1,0 +1,2 @@
+# Data directory — dataset files are not tracked by git.
+# Run scripts/0_generate_toy_dataset.py to create csi_toy.npz and csi_toy.pt here.

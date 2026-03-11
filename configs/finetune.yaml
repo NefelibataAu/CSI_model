@@ -1,0 +1,44 @@
+# ============================================================
+# Finetune configuration — CSI compression & reconstruction
+# ============================================================
+
+# ---------- Data ----------
+data:
+  path: data/csi_toy.npz
+  npz_key: csi
+  batch_size: 64
+  num_workers: 2
+  val_split: 0.1
+
+# ---------- CSI dimensions ----------
+csi:
+  n_sc: 32
+  n_r: 4
+  n_t: 4
+
+# ---------- Model ----------
+model:
+  d_model: 256
+  n_heads: 8
+  n_layers_enc: 4
+  n_layers_dec: 4
+  d_ff: 1024
+  latent_dim: 128               # bottleneck size → controls compression ratio
+  dropout: 0.1
+
+# ---------- Pretrained weights (optional) ----------
+pretrained:
+  checkpoint: null              # set to path like "checkpoints/pretrain/pretrain_epoch0100.pt"
+
+# ---------- Training ----------
+train:
+  n_epochs: 50
+  lr: 5.0e-5
+  weight_decay: 1.0e-2
+  use_amp: false
+  device: cpu
+
+# ---------- Checkpoints ----------
+checkpoint:
+  save_dir: checkpoints/finetune
+  save_every: 10

@@ -1,0 +1,26 @@
+# Data files
+data/*.npz
+data/*.pt
+data/*.npy
+
+# Checkpoints
+checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Outputs
+outputs/
+
+# Editors
+.vscode/
+.idea/
+*.swp
